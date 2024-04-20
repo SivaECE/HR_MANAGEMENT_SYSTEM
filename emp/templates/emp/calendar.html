@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+  
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="header d-flex justify-content-between bg-light">
+        <nav class="nav">
+            <a class="nav-link text-dark" href="{% url 'allemployees' %}">ALL EMPLOYEES</a>
+            <a class="nav-link text-dark" href="{% url 'addemployee' %}">ADD EMPLOYEE</a>
+            <a class="nav-link text-dark" href="{% url 'salarydetails' %}">SALARY RECORD</a>
+            <a class="nav-link text-dark" href="{% url 'addsalary' %}"> ADD SALARY </a>
+            <a class="nav-link text-dark" href="{% url 'applyleave' %}"> APPLY LEAVE </a>
+            <a class="nav-link text-dark" href="{% url 'history' %}"> LEAVE HISTORY </a>
+            <a class="nav-link text-dark" href="{% url 'logout' %}"> LOGOUT </a>
+          </nav>
+    </div>     
+    <title>Event Calendar</title>
+    <style>
+        h2 {
+             background-color: blue;
+             color: white;
+             padding: 20px;
+             text-align: center;
+             margin-top: 60px;
+        }     
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+
+    .header {
+       background-color: blue;
+       padding: 10px;
+    }
+.nav {
+    display: flex;
+    justify-content: space-around;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+.nav a:hover {
+    color: white;
+    font-size: 20px;
+    
+}
+th {
+    background-color: blue;
+    color:white;
+}
+
+
+    </style>
+</head>
+<body>
+    <h2> EVENTS</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in weeks %}
+                <tr>
+                    {% for day, events in week %}
+                        <td>
+                            <strong>{{ day.day }}</strong><br>
+                            {% for event in events %}
+                                {{ event.event_name }}<br>
+                                {{ event.start_time|time:"H:i" }} - {{ event.end_time|time:"H:i" }}<br>
+                            {% empty %}
+                                No events
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+{% endblock content %}

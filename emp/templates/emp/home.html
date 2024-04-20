@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            
+        }
+        header {
+            background-color:blue;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+        nav {
+            background-color:#f8f9fa;
+            color: black;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            font-size: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .content {
+            background-color: lightgray;
+            padding: 60px;
+            border-radius: 10px;
+            margin-top: 10px;
+            
+        }
+        
+        footer {
+            background-color: #000002;
+            color: white;
+            
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HR MANAGEMENT SYSTEMS</h1>
+
+        
+    </header>
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="content">
+            <h1>Welcome to our HR Management System</h1>
+            <p>This comprehensive HR Management System empowers organizations to efficiently oversee their workforce, streamline departmental operations, manage vacancies, and generate insightful reports. From tracking employee data and performance metrics to facilitating seamless communication between departments, our system ensures that every aspect of human resource management is optimized for productivity and effectiveness. With advanced features such as automated workflows, customizable reporting tools, and intuitive interfaces, our platform simplifies complex tasks, enabling HR professionals to focus on strategic initiatives that drive organizational success. Whether it's talent acquisition, performance evaluations, or workforce planning, our system provides the tools and insights necessary to make informed decisions and foster a thriving workplace culture</p>
+           
+            <p>Our system allows HR personnel to easily add new employees to the database. This includes capturing essential information such as personal details, contact information, job title, department, and any other relevant data. By centralizing employee information in one accessible platform, organizations can ensure accuracy and compliance while simplifying the onboarding process.</p>
+            
+            <p>Managing employee compensation is simplified with our salary management feature. HR administrators can input and update salary details for each employee, including base salary, bonuses, allowances, and deductions. Additionally, our system supports flexible salary structures, enabling organizations to implement variable pay components based on performance metrics or other criteria. By automating salary calculations and adjustments, organizations can ensure fairness and transparency while minimizing errors and administrative overhead.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 HR Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

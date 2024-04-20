@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <h4 class="text-center">Update Employee Details</h4>
+  <style>
+    .nav a:hover {
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+
+
+<div class="card p-3">
+    <form action="/doupdateemployee/{{singleemp.id}}/" method = "POST">
+        {% csrf_token %}
+        <div class="mb-1">
+          <label for="exampleInputEmail1" class="form-label">Employee Id</label>
+          <input type="text" class="form-control"  placeholder="Enter the Employee Id" name = "employeeid" value="{{singleemp.employeeid}}" readonly>
+        </div>
+        <div class="mb-1">
+          <label for="exampleInputPassword1" class="form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Enter the Name"  name = "employeename" value="{{singleemp.employeename}}">
+        </div>
+        <div class="mb-1">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="text" class="form-control" placeholder="Enter the Email"  name = "employeeemail" value="{{singleemp.email}}">
+          </div>
+          <div class="mb-1">
+            <label for="exampleInputPassword1" class="form-label">Address</label>
+            <input type="text" class="form-control" placeholder="Enter the Address"  name = "employeeaddress" value="{{singleemp.address}}">
+          </div>
+
+          <div class="mb-1">
+            <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="Enter the Mobile Number "  name = "employeemobilenumber" value="{{singleemp.mobilenumber}}">
+          </div>
+          <div class="container text-center mt-2">
+            <button type="submit" class="btn btn-sm btn-outline-success">Update</button>
+          </div>
+        
+      </form>
+</div>
+
+
+
+
+
+ {% endblock content %}

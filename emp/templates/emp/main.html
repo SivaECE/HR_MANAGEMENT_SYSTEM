@@ -1,0 +1,32 @@
+
+
+
+{% block content %}
+
+
+<div class="header d-flex justify-content-between bg-light">
+    <nav class="nav">
+        <a class="nav-link text-dark" href="{% url 'allemployees' %}">ALL EMPLOYEES</a>
+        <a class="nav-link text-dark" href="{% url 'addemployee' %}">ADD EMPLOYEE</a>
+        <a class="nav-link text-dark" href="{% url 'salarydetails' %}">SALARY RECORD</a>
+        <a class="nav-link text-dark" href="{% url 'addsalary' %}"> ADD SALARY </a>
+        <a class="nav-link text-dark" href="{% url 'calendar' %}"> CALENDAR</a>
+        <a class="nav-link text-dark" href="{% url 'applyleave' %}"> APPLY LEAVE  </a>
+        <a class="nav-link text-dark" href="{% url 'history' %}"> LEAVE HISTORY </a>
+        <a class="nav-link text-dark" href="{% url 'logout' %}"> LOGOUT </a>
+
+      </nav>
+</div>    
+<style>
+  .nav a:hover {
+    color: rgb(209, 74, 74);
+    font-size: 20px;
+  }
+.nav a{
+  background-color: #8a4242;
+  
+}
+</style>  
+      
+      
+{% endblock content %}

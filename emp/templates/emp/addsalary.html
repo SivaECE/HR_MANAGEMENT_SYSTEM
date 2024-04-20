@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+      
+     
+
+
+
+{% block content %}
+
+  
+  <div class="header d-flex justify-content-between bg-light">
+    <nav class="nav">
+        <a class="nav-link text-dark" href="{% url 'allemployees' %}">ALL EMPLOYEES</a>
+        <a class="nav-link text-dark" href="{% url 'addemployee' %}">ADD EMPLOYEE</a>
+        <a class="nav-link text-dark" href="{% url 'salarydetails' %}">SALARY RECORD</a>
+        <a class="nav-link text-dark" href="{% url 'calendar' %}"> CALENDAR </a>
+        <a class="nav-link text-dark" href="{% url 'applyleave' %}"> APPLY LEAVE </a>
+        <a class="nav-link text-dark" href="{% url 'history' %}"> LEAVE HISTORY </a>
+        <a class="nav-link text-dark" href="{% url 'logout' %}"> LOGOUT </a>
+      </nav>
+  </div>   
+  <style>
+    .nav a:hover {
+      color: white;
+      font-size: 20px;
+    }
+    h4{
+      margin-top: 15px;
+      padding: 20px;
+    }
+  </style> 
+
+  <h4 class="text-center">UPDATE SALARY</h4>
+
+<div class="card p-3">
+    <form action="/addsalary/" method = "POST">
+        {% csrf_token %}
+        <div class="mb-1  p-2 bg-primary">
+          <label for="exampleInputEmail1" class="form-label">Employee Id</label>
+          <input type="text" class="form-control"  placeholder="Enter the Employee Id" name = "employeeid">
+        </div>
+        <div class="mb-1 p-2 bg-primary">
+          <label for="exampleInputPassword1" class="form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Enter the Name"  name = "employeename" >
+        </div>
+        <div class="mb-1 p-2 bg-primary">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input type="text" class="form-control" placeholder="Enter the Email"  name = "employeeemail">
+          </div>
+          <div class="mb-1 p-2 bg-primary">
+            <label for="exampleInputPassword1" class="form-label">Month salary</label>
+            <input type="text" class="form-control" placeholder="Enter the Month salary"  name = "monthsalary">
+          </div>
+
+          <div class="mb-1 p-2 bg-primary">
+            <label for="exampleInputPassword1" class="form-label">Working days</label>
+            <input type="text" class="form-control" placeholder="Enter the Working days "  name = "workingdays">
+          </div>
+          <div class="mb-1 p-2 bg-primary">
+            <label for="exampleInputPassword1" class="form-label">Salary year</label>
+            <input type="text" class="form-control" placeholder="Enter the Salary year "  name = "salaryyear">
+          </div>
+          <div class="mb-1 p-2 bg-primary">
+            <label for="exampleInputPassword1" class="form-label">Annual salary</label>
+            <input type="text" class="form-control" placeholder="Enter the Annual salary "  name = "annualsalary">
+          </div>
+          <div class="container text-center mt-2">
+            <button type="submit" class="btn btn-sm btn-outline-success">Add Salary</button>
+          </div>
+        
+      </form>
+</div>
+
+
+
+
+
+ {% endblock content %}

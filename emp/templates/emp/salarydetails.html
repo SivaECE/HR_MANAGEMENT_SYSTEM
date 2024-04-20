@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+
+</style>
+{% block content %}
+
+<div class="header d-flex justify-content-between bg-light">
+  <nav class="nav">
+      <a class="nav-link text-dark" href="{% url 'allemployees' %}">ALL EMPLOYEES</a>
+      <a class="nav-link text-dark" href="{% url 'addemployee' %}">ADD EMPLOYEE</a>
+      <a class="nav-link text-dark" href="{% url 'addsalary' %}"> ADD SALARY </a>
+      <a class="nav-link text-dark" href="{% url 'calendar' %}"> CALENDAR </a>
+      <a class="nav-link text-dark" href="{% url 'applyleave' %}"> APPLY LEAVE </a>
+      <a class="nav-link text-dark" href="{% url 'history' %}"> LEAVE HISTORY </a>
+      <a class="nav-link text-dark" href="{% url 'logout' %}"> LOGOUT </a>
+    </nav>
+</div>  
+<style>
+  .nav a:hover {
+    color: white;
+    font-size: 20px;
+  }
+   
+  .nav a:hover {
+    color: white;
+    font-size: 20px;
+  }
+  h4 {
+    margin-top: 30px;
+    padding: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+  }
+
+  .table th {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+ }
+ .table th{
+  background-color: blue;
+ }
+
+  .table th {
+    background-color: blue; 
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; 
+  }
+
+  .table tbody tr:hover {
+    background-color: #ddd; 
+  }
+
+  .table img {
+    width: 100px;
+    height: auto;
+  }
+  .nav a:hover {
+    color: white;
+    font-size: 20px;
+  }
+  h4 {
+    margin-top: 30px;
+    padding: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+  }
+
+  .table th {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+ }
+ .table th{
+  background-color: blue;
+ }
+
+  .table th {
+    background-color: blue; 
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; 
+  }
+
+  .table tbody tr:hover {
+    background-color: #ddd; 
+  }
+
+  .table img {
+    width: 100px;
+    height: auto;
+  }
+</style>  
+<h4 class="text-center">SALARY RECORDS</h4>
+
+<div class="container card">
+    
+
+    <div class="">
+        <table class="table text-center">
+            <thead>
+              <tr>
+                
+                
+                <th scope="col">Employee Id</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Month salary</th>
+                <th scope="col">Working days</th>
+                <th scope="col">Annual Salary</th>
+                <th scope="col">Salary year</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            
+              </tr>
+            </thead>
+            <tbody>
+                {% if salarydetails %}
+                {% for eachemployee in salarydetails %}
+              <tr>
+               
+                
+                <td>{{ eachemployee.employeeid }}</td>
+                <td>{{ eachemployee.employeename }}</td>
+                <td>{{ eachemployee.email }}</td>
+                <td>{{ eachemployee.monthsalary }}</td>
+                <td>{{ eachemployee.workingdays }}</td>
+                <td>{{ eachemployee.annualsalary }}</td>
+                <td>{{ eachemployee.salaryyear }}</td>
+                <td><a href="{% url 'updatesalary' eachemployee.id %}" class="btn btn-sm btn-outline-success">Update</a></td>
+                <td><a href="{% url 'deletesalary' eachemployee.id %}" class="btn btn-sm btn-outline-danger">Delete</a></td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+    </div>
+
+</div>
+
+
+  
+
+
+
+ {% endblock content %}
+
+
+    
