@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
-from .models import Employee,History
+from .models import History
 from .models import Salary
 from django.contrib.auth import authenticate,login,logout
 from .models import CalendarEvent
 from datetime import datetime,timedelta
 from django.contrib.auth.decorators import login_required
+from .models import Employeedetails
+
 
 
 # Create your views here.
@@ -15,7 +17,7 @@ def home(request):
 
 
 def allemployees(request):
-    emp = Employee.objects.all()
+    emp = Employeedetails.objects.all()
     return render(request, "emp/allemployees.html" , {"allemployees":emp})
 
 
@@ -29,15 +31,33 @@ def addemployee(request):
         employeeid = request.POST.get("employeeid")
         employeename = request.POST.get("employeename")
         employeeemail = request.POST.get("employeeemail")
+        dateofbirth  = request.POST.get("dateofbirth")
+        bloodgroup  = request.POST.get("bloodgroup")
+        gender  = request.POST.get("gender")
+        maritalstatus  = request.POST.get("maritalstatus")
+        aadharnumber  = request.POST.get("aadharnumber")
+        pannumber  = request.POST.get("pannumber")
         employeeaddress = request.POST.get("employeeaddress")
+        city  = request.POST.get("city")
+        state  = request.POST.get("state")
+        pincode  = request.POST.get("pincode")
         employeemobilenumber = request.POST.get("employeemobilenumber")
 
         # create an object of the Employee model.
-        e = Employee()
+        e = Employeedetails()
         e.employeeid = employeeid
         e.employeename = employeename
         e.email = employeeemail
+        e.dateofbirth = dateofbirth
+        e.bloodgroup = bloodgroup
+        e.gender = gender
+        e.maritalstatus = maritalstatus
+        e.aadharnumber = aadharnumber
+        e.pannumber = pannumber
         e.address = employeeaddress
+        e.city = city
+        e.state = state
+        e.pincode = pincode
         e.mobilenumber = employeemobilenumber
         e.save()
         return redirect("/allemployees")
@@ -45,13 +65,13 @@ def addemployee(request):
 
 
 def deleteemployee(request, empid):
-    e = Employee.objects.get(pk = empid)
+    e = Employeedetails.objects.get(pk = empid)
     e.delete()
     return redirect("allemployees")
 
 
 def updateemployee(request, empid):
-    e = Employee.objects.get(pk = empid)
+    e = Employeedetails.objects.get(pk = empid)
     
     return render(request, "emp/updateemployee.html", {"singleemp": e})
 
@@ -59,14 +79,34 @@ def doupdateemployee(request, empid):
     updatedemployeeid           = request.POST.get('employeeid')
     updatedemployeename         = request.POST.get('employeename')
     updatedemployeeemail        = request.POST.get('employeeemail')
-    updatedemployeeaddress      = request.POST.get('employeeaddress')
-    updatedemployeemobilenumber = request.POST.get('employeemobilenumber')
-    emp = Employee.objects.get(pk = empid)
-    emp.employeeid   = updatedemployeeid
-    emp.employeename = updatedemployeename
-    emp.email        = updatedemployeeemail
-    emp.address      = updatedemployeeaddress
-    emp.mobilenumber = updatedemployeemobilenumber
+    updateddateofbirth          = request.POST.get("dateofbirth")
+    updatedbloodgroup           = request.POST.get("bloodgroup")
+    updatedgender               = request.POST.get("gender")
+    updatedmaritalstatus        = request.POST.get("maritalstatus")
+    updatedaadharnumber         = request.POST.get("aadharnumber")
+    updatedpannumber            = request.POST.get("pannumber")
+    updatedemployeeaddress      = request.POST.get("employeeaddress")
+    updatedcity                 = request.POST.get("city")
+    updatedstate                = request.POST.get("state")
+    updatedpincode              = request.POST.get("pincode")
+    updatedemployeemobilenumber = request.POST.get("employeemobilenumber")
+    
+    emp = Employeedetails.objects.get(pk = empid)
+    emp.employeeid        = updatedemployeeid
+    emp.employeename      = updatedemployeename
+    emp.email             = updatedemployeeemail
+    emp.dateofbirth       = updateddateofbirth
+    emp.bloodgroup        = updatedbloodgroup
+    emp.gender            = updatedgender
+    emp.maritalstatus     = updatedmaritalstatus
+    emp.aadharnumber      = updatedaadharnumber
+    emp.pannumber         = updatedpannumber
+    emp.address           = updatedemployeeaddress
+    emp.city              = updatedcity
+    emp.state             = updatedstate
+    emp.pincode           = updatedpincode
+    emp.mobilenumber      = updatedemployeemobilenumber
+    
     emp.save()
     return redirect("allemployees")
 
@@ -104,19 +144,9 @@ def addsalary(request):
     return render(request, "emp/addsalary.html" , {"addsalary":emp})
 
 
-"""def login_page(request):
-  if True:
-    name=request.POST.get('username')
-    if name =="keerthi":
-    
-     return redirect("/main")
-  
-    
-    return render(request,"emp/login.html")"""
-
 def login_page(request):
   if request.user.is_authenticated:
-    return redirect("/main")
+    return redirect("/allemployees")
   else:
     if request.method=='POST':
       name=request.POST.get('username')
@@ -138,7 +168,7 @@ def logout_page(request):
   return redirect("/")
   
 def main(request):
-    emp = Employee.objects.all()
+    emp = Employeedetails.objects.all()
     return render(request, "emp/main.html" , {"main":emp})
 
 def login(request):
