@@ -9,13 +9,8 @@ def getFileName(request,filename):
 
 # Create your models here.
 
-class Employee(models.Model):
-    employeeid    = models.CharField(max_length=100)
-    image=models.ImageField(upload_to=getFileName,null=True,blank=True)
-    employeename  = models.CharField(max_length=50)
-    email         = models.CharField(max_length=50)
-    address       = models.CharField(max_length=50)
-    mobilenumber  = models.CharField(max_length=50)
+
+
 
 class Salary(models.Model):
     employeeid    = models.CharField(max_length=100)
@@ -46,4 +41,21 @@ class History(models.Model):
     startdate     = models.DateField()
     enddate       = models.DateField()
     reason        = models.CharField(max_length=50)
-    status        = models.CharField(max_length=50)    
+    status        = models.CharField(max_length=50)   
+
+class Employeedetails(models.Model):
+    employeeid       = models.CharField(max_length=100)
+    image            =models.ImageField(upload_to=getFileName,null=True,blank=True)
+    employeename     = models.CharField(max_length=50)
+    email            = models.CharField(max_length=50)
+    dateofbirth      = models.CharField(max_length=50)
+    bloodgroup         = models.CharField(max_length=50)
+    gender         = models.CharField(max_length=50)
+    maritalstatus         = models.CharField(max_length=50)
+    aadharnumber        = models.CharField(max_length=50)
+    pannumber         = models.CharField(max_length=50)
+    address       = models.CharField(max_length=50)
+    city         = models.CharField(max_length=50)
+    state         = models.CharField(max_length=50)
+    pincode         = models.CharField(max_length=50)
+    mobilenumber  = models.CharField(max_length=50)
